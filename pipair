@@ -1,0 +1,14 @@
+#!/bin/bash
+export JAVA_TOOLS_OPTIONS="-Xmx128m"
+opt $1 -print-callgraph  2>out.txt >/dev/null
+
+if [ $# -eq 1 ]
+	then
+		printf "1" >> log.log 
+		java -Xmx128m -cp .. pipair 3 65 2> log.txt
+fi
+if [ $# -eq 3 ]
+	then 
+		printf "3" >> log.log
+		java -Xmx128m -cp .. pipair $2 $3 2>log.txt
+fi
